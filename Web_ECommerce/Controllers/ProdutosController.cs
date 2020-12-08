@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Security;
@@ -10,7 +9,6 @@ using Entities.Entities;
 using Entities.Entities.Enums;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -170,6 +168,20 @@ namespace Web_ECommerce.Controllers
                 await LogEcommerce(EnumTipoLog.Erro, erro);
                 return View();
             }
+        }
+
+        public async Task<IActionResult> DashboardVendas()
+        {
+            return View();
+        }
+
+
+        [HttpGet("/api/ListarProdutosVendidos")]
+        public async Task<JsonResult> ListarProdutosVendidos(string filtro)
+        {
+            var idUsuario = await RetornarIdUsuarioLogado();
+
+            return Json(await _InterfaceProductApp.ListarProdutosVendidos(idUsuario, filtro));
         }
 
 

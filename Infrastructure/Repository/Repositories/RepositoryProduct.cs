@@ -93,6 +93,18 @@ namespace Infrastructure.Repository.Repositories
             }
         }
 
+        public async Task<List<Produto>> ListarProdutosVendidos(string userId, string filtro)
+        {
+            using (var banco = new ContextBase(_optionsbuilder))
+            {
+                var produtosVendidos = await (from p in banco.Produto
+                                              join c in banco.CompraUsuario on p.Id equals c.IdProduto
+                                              where p.UserId.Equals(userId) && c.Estado == EnumEstadoCompra.Produto_Comprado
+                                              && (string.IsNullOrWhiteSpace(filtro) || p.Descricao.Contains(filtro))
+                                              select p).AsNoTracking().ToListAsync();
 
+                return produtosVendidos;
+            }
+        }
     }
 }

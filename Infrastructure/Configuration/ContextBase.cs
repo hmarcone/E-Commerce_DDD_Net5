@@ -36,7 +36,7 @@ namespace Infrastructure.Configuration
 
         private string GetStringConectionConfig()
         {
-            string strCon = "Server=tcp:devecommercemarcone.database.windows.net,1433;Initial Catalog=dev;Persist Security Info=False;User ID=hmarcone;Password=Lua@2020;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            string strCon = "Server=tcp:devecommercemarcone.database.windows.net,1433;Initial Catalog=dev;Persist Security Info=False;User ID=hmarcone;Password=teste;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
             //string strCon = "Data Source=localhost\\SQLEXPRESS;Initial Catalog=DDD_ECOMMERCE;Integrated Security=True";
             return strCon;
         }

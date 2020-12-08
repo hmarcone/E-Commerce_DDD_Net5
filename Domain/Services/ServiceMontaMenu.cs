@@ -28,6 +28,7 @@ namespace Domain.Services
                 // QUANDO USUÁRIO LOGADO USUÁRIO LOGADO 
                 retorno.Add(new MenuSite { Controller = "Produtos", Action = "Index", Descricao = "Meus Produtos" });
                 retorno.Add(new MenuSite { Controller = "CompraUsuario", Action = "MinhasCompras", Descricao = "Minhas Compras" });
+                retorno.Add(new MenuSite { Controller = "Produtos", Action = "DashboardVendas", Descricao = "Minhas Vendas" });
 
                 var usuario = await _IUsuario.ObterUsuarioPeloID(userID);
                 if (usuario != null && usuario.Tipo != null)
